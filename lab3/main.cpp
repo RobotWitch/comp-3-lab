@@ -14,9 +14,9 @@ using namespace std;
 class Mass{
 public:
     Mass();
-    void setMassAvoirdupoisPounds(int mass);
-    void setMassTroyPounds(int mass);
-    void setMassMetricGrams(int mass);
+    void setMassAvoirdupoisPounds(double mass);
+    void setMassTroyPounds(double mass);
+    void setMassMetricGrams(double mass);
 
     //accessor functions.
     double accessMassAvoirdupoisPounds() const;
@@ -30,7 +30,8 @@ void clear_keyboard_buffer();
 
 int main() {
    Mass object;
-   int pick, mass;
+   int pick;
+   double mass;
 
    do {
        while (
@@ -75,19 +76,19 @@ int main() {
 Mass::Mass() {
     drams = 0;
 }
-// precondition: mass is an initialized non-negative integer representing Troy pounds
+// precondition: mass is an initialized non-negative double representing Troy pounds
 // postcondition: the drams variable will contain the value of mass in drams
-void Mass::setMassTroyPounds(int mass) {
+void Mass::setMassTroyPounds(double mass) {
     drams = mass * 96;
 }
-// precondition: mass is an initialized non-negative integer representing Avoirdupois pounds
+// precondition: mass is an initialized non-negative double representing Avoirdupois pounds
 // postcondition: the drams variable will contain the value of mass in drams
-void Mass::setMassAvoirdupoisPounds(int mass) {
+void Mass::setMassAvoirdupoisPounds(double mass) {
     drams = mass * 256;
 }
-// precondition: mass is an initialized non-negative integer representing Metric grams
+// precondition: mass is an initialized non-negative double representing Metric grams
 // postcondition: the drams variable will contain the value of mass in drams
-void Mass::setMassMetricGrams(int mass) {
+void Mass::setMassMetricGrams(double mass) {
     drams = mass / 1.7718451953125;
 }
 // precondition: a setter function has been called, giving drams a value
