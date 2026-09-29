@@ -26,7 +26,7 @@ class Month {
 
         string MonthToString();
         string MonthToString2();
-    EMonth _month;
+        EMonth _month;
 };
 
 /* Definitions of helper member functions for class Month */
@@ -96,3 +96,17 @@ ostream& operator<< (ostream& out, Month m) {
     out << m.MonthToString2();
     return out;
 }
+
+class Date {
+    friend ostream& operator<< (ostream&, Month);
+
+
+    private:
+        enum EMonth { Jan=1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec };
+
+        Date() : _month(Jan), _year(2018) {} // default constructor
+        Date(int im, int year) : _month( static_cast<EMonth>(im)), _year(year) {} // value constructor
+
+        EMonth _month;
+        int _year;
+};
