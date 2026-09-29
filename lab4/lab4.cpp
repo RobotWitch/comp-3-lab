@@ -96,6 +96,7 @@ ostream& operator<< (ostream& out, Month m) {
     out << m.MonthToString2();
     return out;
 }
+<<<<<<< HEAD
 
 class Date {
     friend ostream& operator<< (ostream&, Month);
@@ -110,3 +111,5 @@ class Date {
         EMonth _month;
         int _year;
 };
+=======
+>>>>>>> e221b1d2e29313ff955f73b400ef713ca4e2ed9e
