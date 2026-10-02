@@ -96,20 +96,40 @@ ostream& operator<< (ostream& out, Month m) {
     out << m.MonthToString2();
     return out;
 }
-<<<<<<< HEAD
 
 class Date {
     friend ostream& operator<< (ostream&, Month);
 
-
-    private:
-        enum EMonth { Jan=1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec };
-
+    public:
+        // constructors
         Date() : _month(Jan), _year(2018) {} // default constructor
         Date(int im, int year) : _month( static_cast<EMonth>(im)), _year(year) {} // value constructor
+        Date(int day, string month_string, int year);
+        Date(string month_string);
 
-        EMonth _month;
+        void changeMonth(int month_num);
+
+    private:
+        int _day;
+        Month _month;
         int _year;
 };
-=======
->>>>>>> e221b1d2e29313ff955f73b400ef713ca4e2ed9e
+
+// constructor which takes day and year as int and month as string (e.g. "Dec")
+Date::Date(int day, string month_string, int year) : _day(day), _year(year) {
+    _month.setMonth(month_string);
+}
+
+// constructor which takes month as string and sets day and year to 1 and 1970
+Date::Date(string month_string) : _day(1), _year(1970) {
+    _month.setMonth(month_string);
+}
+
+// change the month to a given month represented as an integer 1-12
+void Date::changeMonth(int month_num) {
+    if (month_num < 1 || month_num > 12) {
+        cerr << "\"" << month_num << "\" is not a valid month. Only values 1-12 are valid" << endl;
+        exit(1);
+    }
+    _month.setMonth(month_num);
+}
