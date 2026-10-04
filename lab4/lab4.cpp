@@ -103,16 +103,18 @@ class Date {
     public:
         // constructors
         Date() : _month(Jan), _year(2018) {} // default constructor
-        Date(int im, int year) : _month( static_cast<EMonth>(im)), _year(year) {} // value constructor
+        Date(int im, int year) : _month(Month(im)), _year(year) {} // value constructor
         Date(int day, string month_string, int year);
         Date(string month_string);
 
         void changeMonth(int month_num);
 
-        void outputDateAsString(ostream &out) const;
-        void outputDateAsInt(ostream &out) const;
+        void outputDateAsString(ostream &out);
+        void outputDateAsInt(ostream &out);
 
     private:
+        enum EMonth { Jan=1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec };
+        // values
         int _day;
         Month _month;
         int _year;
@@ -138,11 +140,11 @@ void Date::changeMonth(int month_num) {
 }
 
 // writes the current date in a "Dec 31, 2018" format
-void Date::outputDateAsString(ostream &out) const {
+void Date::outputDateAsString(ostream &out)  {
     out << _month.MonthToString() << " " << _day << ", " << _year;
 }
 
 // writes the current date in a "12/31/2018" format
-void Date::outputDateAsInt(ostream &out) const {
+void Date::outputDateAsInt(ostream &out)  {
     out << _month.MonthToInt() << "/" << _day << "/" << _year;
 }
